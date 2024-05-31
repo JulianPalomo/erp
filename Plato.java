@@ -39,5 +39,9 @@ public class Plato {
     public void setPrecio(double precio) {
         this.precio = precio;
     }
+    @Override
+    public String toString() {
+        return nombre + " - $" + precio;
+    }
 
 }

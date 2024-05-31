@@ -2,13 +2,18 @@ public class Mesa {
 
     private String numero;
     private int capacidad;
-    private String estado;
+    private EstadoMesa estado;
+
+    private Pedido pedido;
+
+    //private Mecero mecero asignado;
 
 
-    public Mesa(String numero, int capacidad, String estado) {
+    public Mesa(String numero, int capacidad, EstadoMesa estado) {
         this.numero = numero;
         this.capacidad = capacidad;
-        this.estado = estado;
+        this.estado = EstadoMesa.DISPONIBLE;
+        this.pedido = null;
     }
 
     public String getNumero() {
@@ -27,11 +32,25 @@ public class Mesa {
         this.capacidad = capacidad;
     }
 
-    public String getEstado() {
+    public EstadoMesa getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(EstadoMesa estado) {
         this.estado = estado;
     }
+
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
+    @Override
+    public String toString() {
+        return "Mesa [numero=" + numero + ", capacidad=" + capacidad + ", estado=" + estado + "]";
+    }
+
 }

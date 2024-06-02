@@ -1,16 +1,31 @@
+import Enums.TipoDePlato;
+import Enums.metodoDePago;
+import GestorFactura.Factura;
+import GestorFactura.GestorFactura;
+import GestorFactura.GestorPedidos;
+import GestorFactura.Plato;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        // Crear algunos platos
+        Plato plato1 = new Plato("Pizza", TipoDePlato.PRINCIPAL, 10.0);
+        Plato plato2 = new Plato("Ensalada", TipoDePlato.ENTRADA, 5.0);
+        Plato plato3 = new Plato("Helado", TipoDePlato.POSTRE, 3.0);
+
+        // Crear gestor de pedidos y agregar platos
+        GestorPedidos gestorPedidos = new GestorPedidos();
+        gestorPedidos.agregarPedido(plato1);
+        gestorPedidos.agregarPedido(plato2);
+        gestorPedidos.agregarPedido(plato3);
+
+        // Calcular total de los pedidos
+        double totalPedido = gestorPedidos.calcularTotal();
+        System.out.println("Total del pedido: $" + totalPedido);
+
+        // Generar factura y mostrar método de pago
+        GestorFactura gestorFacturas = new GestorFactura();
+        Factura factura = gestorFacturas.generarFactura(gestorPedidos, metodoDePago.EFECTIVO);
+        System.out.println("Factura generada con método de pago: " + factura.getMetodoDePago());
     }
-}
+    }
